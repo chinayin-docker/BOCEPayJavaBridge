@@ -17,13 +17,17 @@
 - 命令行方式运行
 
 ```bash
-java -jar webapp-runner-[version].jar BOCEPayJavaBridge-[version].war --port 8080
+java -jar webapp-runner-[version].jar BOCEPayJavaBridge-[version].war
 ```
 
 - Docker镜像
 
 ```bash
+# 拉镜像
 docker pull chinayin:bocepay-java-bridge:[version]
+
+# 启动
+docker run -it -p 8080:8080 --platform linux/amd64 -v /xxx/cert.pfx:/app/cert.pfx chinayin/bocepay-java-bridge:[version] /bin/bash
 ```
 
 ### 附录：
