@@ -1,0 +1,31 @@
+name: Release Ci
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [11, 17]
+    name: Release JDK ${{ matrix.java }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'adopt'
+          java-version: ${{ matrix.java }}
+          cache: 'maven'
+      - name: Build with Maven
+        run: mvn clean package -B --file pom.xml
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          generate_release_notes: "true"
+          files: |
+            target/*.war

@@ -1,0 +1,10 @@
+.DS_Store
+.idea
+.vscode
+.env
+.git
+.gitattributes
+.gitignore
+.github
+.mvn
+target/
