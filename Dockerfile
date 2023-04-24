@@ -31,4 +31,6 @@ COPY --from=builder /app/target/BOCEPayJavaBridge.war /app/BOCEPayJavaBridge.war
 COPY --from=builder /app/bin/webapp-runner-*.jar /app/webapp-runner.jar
 WORKDIR /app
 
+EXPOSE 8080
+
 ENTRYPOINT ["sh","-c","java -jar $JAVA_OPTS webapp-runner.jar BOCEPayJavaBridge.war --port 8080 $PARAMS"]
