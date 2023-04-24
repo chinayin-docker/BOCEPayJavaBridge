@@ -31,6 +31,9 @@ COPY --from=builder /app/target/BOCEPayJavaBridge.war /app/BOCEPayJavaBridge.war
 COPY --from=builder /app/bin/webapp-runner-*.jar /app/webapp-runner.jar
 WORKDIR /app
 
+RUN set -eux \
+  && install_packages php-cgi
+
 EXPOSE 8080
 
-ENTRYPOINT ["sh","-c","java -jar $JAVA_OPTS webapp-runner.jar BOCEPayJavaBridge.war --port 8080 $PARAMS"]
+ENTRYPOINT ["sh","-c","java -jar $JAVA_OPTS webapp-runner.jar BOCEPayJavaBridge.war $PARAMS"]
