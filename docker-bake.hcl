@@ -16,7 +16,7 @@ variable "repository" {
 
 function "platforms" {
   params = []
-  result = ["linux/amd64"]
+  result = ["linux/amd64","linux/arm64"]
 }
 
 target "_all_platforms" {

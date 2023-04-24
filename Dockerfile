@@ -21,7 +21,7 @@ RUN set -eux \
   && ls -l target \
   && SDK_VERSION=$(grep '<version>' pom.xml |head -n1 |tr -cd "[0-9.]") \
   && echo $SDK_VERSION \
-  && cp -f target/BOCEPayJavaBridge-${SDK_VERSION}-war target/BOCEPayJavaBridge.war
+  && cp -f target/BOCEPayJavaBridge-${SDK_VERSION}.war target/BOCEPayJavaBridge.war
 
 FROM --platform=linux/amd64 chinayin/openjdk:11-jre-bullseye-slim
 ENV TZ=PRC
