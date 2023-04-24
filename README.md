@@ -17,7 +17,7 @@
 - 命令行方式运行
 
 ```bash
-java -jar webapp-runner-[version].jar BOCEPayJavaBridge-[version].jar --port 8090
+java -jar webapp-runner-[version].jar BOCEPayJavaBridge-[version].war --port 8080
 ```
 
 - Docker镜像
