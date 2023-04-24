@@ -14,7 +14,7 @@ jobs:
       - name: Set variables
         id: vars
         run: |
-          echo "repository=${GITHUB_ACTOR}/$(basename ${GITHUB_REPOSITORY})" >> $GITHUB_OUTPUT
+          echo "repository=${GITHUB_ACTOR}/bocepay-java-bridge" >> $GITHUB_OUTPUT
           echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
