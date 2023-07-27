@@ -25,7 +25,11 @@ try{
     $helper = new Java('com.zlpay.javabridge.Helper');
 
     // sm4 encrypt
-    $value = java_values($helper->encrypt($key,$planData));
+    $value = java_values($helper->sm4EcbEncrypt($key,$planData));
+    var_dump("sm4 encrypt: $value");
+
+    // sm2 encrypt
+    $value = java_values($helper->sm2Encrypt($cert,$key));
     var_dump("sm4 encrypt: $value");
 
     // sm2 sign
