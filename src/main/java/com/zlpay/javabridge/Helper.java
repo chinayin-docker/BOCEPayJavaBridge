@@ -35,11 +35,23 @@ public class Helper {
         return false;
     }
 
-    public static String encrypt(String key, String body) {
+    public static String sm4EcbEncrypt(String key, String body) {
         try {
             String jsonData = SM4Util.sm4EcbEncrypt(key, body, "NoPadding");
             System.out.println("加密数据：" + jsonData);
             return jsonData;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public static String sm2Encrypt(String cer, String key) {
+        try {
+            String publicKey = getPublicKey(cer);
+            String secretKey = SM2Util.encrypt(publicKey, key);
+            System.out.println("加密数据：" + secretKey);
+            return secretKey;
         } catch (Exception e) {
             e.printStackTrace();
         }
