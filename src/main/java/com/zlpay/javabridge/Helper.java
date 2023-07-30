@@ -1,5 +1,6 @@
 package com.zlpay.javabridge;
 
+import com.zlpay.assist.compress.zip.ZipUtil;
 import com.zlpay.assist.encrypt.sm4.SM4Util;
 import com.zlpay.assist.sign.sm2.SM2Cert;
 import com.zlpay.assist.sign.sm2.SM2Util;
@@ -11,6 +12,27 @@ import java.io.IOException;
 import java.security.cert.X509Certificate;
 
 public class Helper {
+
+    public static String inflater(String base64)  {
+        try{
+            String str = new String(ZipUtil.inflater(Base64.decode(base64)));
+            System.out.println("inflater结果：" + str);
+            return str;
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return "";
+    }
+    public static String deflater(String input)  {
+        try{
+            String str = Base64.toBase64String(ZipUtil.deflater(input.getBytes()));
+            System.out.println("deflater结果：" + str);
+            return str;
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return "";
+    }
 
     public static String sign(String sm2, String password, String signNo, String data) {
         try {

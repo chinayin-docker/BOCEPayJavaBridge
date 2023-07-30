@@ -49,6 +49,17 @@ try{
     $value = java_values($helper->decrypt($sm2Cert,$sm2Pwd,$secret, $data));
     var_dump("sm4 decrypt: $value");
 
+    // zip inflater
+    $base64Str = '';
+    $value = java_values($helper->inflater($base64Str));
+    var_dump("zip inflater: $value");
+
+    // zip deflater
+    $str = '';
+    $value = java_values($helper->deflater($str));
+    var_dump("zip deflater: $value");
+
+
 }catch(\Exception $ex){
     var_dump($ex->getMessage());
 }
